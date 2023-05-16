@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    internal class ShoppingCartItem
+    public class ShoppingCartItem
     {
+        public Product Product { get; set; }
+        public int Quantity { get; set; }
+
+        public ShoppingCartItem(Product product, int quantity)
+        {
+            Product = product;
+            Quantity = quantity;
+        }
     }
 }
