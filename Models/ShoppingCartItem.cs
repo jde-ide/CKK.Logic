@@ -9,33 +9,39 @@ namespace CKK.Logic.Models
 {
     public class ShoppingCartItem
     {
-        private Product _product;
-        private int _quantity;
+        private Product product;
+        private int quantity;
 
         public ShoppingCartItem(Product product, int quantity)
         {
-            _product = product;
-            _quantity = quantity;
+            this.product = product;
+            this.quantity = quantity;
         }
 
         public Product GetProduct()
         {
-            return _product;
+            return product;
         }
 
         public void SetProduct(Product product)
         {
-            _product = product;
+            this.product = product;
         }
 
         public int GetQuantity()
         {
-            return _quantity;
+            return quantity;
         }
 
         public void SetQuantity(int quantity)
         {
-            _quantity = quantity;
+            this.quantity = quantity;
+        }
+
+        public decimal GetTotal()
+        {
+            decimal total = product.GetPrice() * this.quantity;
+            return total;
         }
     }
 }
