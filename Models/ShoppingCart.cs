@@ -122,6 +122,102 @@ namespace CKK.Logic.Models
             }
         }
 
+        public ShoppingCartItem RemoveProduct(Product prod, int quantity)
+        {
+            if (quantity > 0)
+            {
+                if (prod.GetId() == product1.GetProduct().GetId())
+                {
+                    product1.SetQuantity(product1.GetQuantity() - quantity);
 
+                    if (product1.GetQuantity() <= 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return product1;
+                    }
+                }
+
+                else if (prod.GetId() == product2.GetProduct().GetId())
+                {
+                    product2.SetQuantity(product2.GetQuantity() - quantity);
+
+                    if (product2.GetQuantity() <= 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return product2;
+                    }
+                }
+
+                else if (prod.GetId() == product3.GetProduct().GetId())
+                {
+                    product3.SetQuantity(product3.GetQuantity() - quantity);
+
+                    if (product3.GetQuantity() <= 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return product3;
+                    }
+                }
+
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public ShoppingCartItem GetProductById(int id)
+        {
+            if (id == product1.GetProduct().GetId())
+            {
+                return product1;
+            }
+
+            else if (id == product2.GetProduct().GetId())
+            { 
+                return product2;
+            }
+            
+            else if (id == product3.GetProduct().GetId())
+            {
+                return product3;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public decimal GetTotal()
+        {
+            decimal total = (product1.GetQuantity() * product1.GetProduct().GetPrice()) +
+                            (product2.GetQuantity() * product2.GetProduct().GetPrice()) +
+                            (product3.GetQuantity() * product3.GetProduct().GetPrice());
+            return total;
+        }
+
+        public ShoppingCartItem GetProduct(int productNum)
+        {
+            switch (productNum)
+            {
+                case 1: return product1;
+                case 2: return product2;
+                case 3: return product3;
+                default: return null;
+            }
+        }
     }
 }
