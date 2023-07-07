@@ -27,13 +27,47 @@ namespace CKK.Logic.Models
         {
             if (quantity > 0)
             {
-                if (/* checking if product exists */)
+                // adding new products
+                if (product1 == null)
                 {
-                    // add quantity if found
+                    product1 = new ShoppingCartItem(prod, quantity);
+                    return product1;
                 }
+
+                else if (product2 == null)
+                {
+                    product2 = new ShoppingCartItem(prod, quantity);
+                    return product2;
+                }
+
+                else if (product3 == null)
+                {
+                    product3 = new ShoppingCartItem(prod, quantity);
+                    return product3;
+                }
+
+                // adding quantity of existing products
+                else if (prod.GetId() == product1.GetProduct().GetId())
+                {
+                    product1.SetQuantity(product1.GetQuantity() + quantity);
+                    return product1;
+                }
+
+                else if (prod.GetId() == product2.GetProduct().GetId())
+                {
+                    product2.SetQuantity(product2.GetQuantity() + quantity);
+                    return product2;
+                }
+
+                else if (prod.GetId() == product3.GetProduct().GetId())
+                {
+                    product3.SetQuantity(product3.GetQuantity() + quantity);
+                    return product3;
+                }
+
                 else
                 {
-                    // add product if doesn't exist
+                    return null;
                 }
             }
             else
@@ -41,5 +75,53 @@ namespace CKK.Logic.Models
                 return null;
             }
         }
+
+        public ShoppingCartItem AddProduct(Product prod)
+        {
+            // adding new products
+            if (product1 == null)
+            {
+                product1 = new ShoppingCartItem(prod, 1);
+                return product1;
+            }
+
+            else if (product2 == null)
+            {
+                product2 = new ShoppingCartItem(prod, 1);
+                return product2;
+            }
+
+            else if (product3 == null)
+            {
+                product3 = new ShoppingCartItem(prod, 1);
+                return product3;
+            }
+
+            // adding 1 to current quantity of existing products
+            else if (prod.GetId() == product1.GetProduct().GetId())
+            {
+                product1.SetQuantity(product1.GetQuantity() + 1);
+                return product1;
+            }
+
+            else if (prod.GetId() == product2.GetProduct().GetId())
+            {
+                product2.SetQuantity(product2.GetQuantity() + 1);
+                return product2;
+            }
+
+            else if (prod.GetId() == product3.GetProduct().GetId())
+            {
+                product3.SetQuantity(product3.GetQuantity() + 1);
+                return product3;
+            }
+
+            else
+            {
+                return null;
+            }
+        }
+
+
     }
 }
